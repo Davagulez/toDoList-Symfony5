@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -27,6 +28,8 @@ class User
      * @var string|null
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
+     * @Assert\NotBlank
+     * @Assert\Regex("/[a-zA-Z]+/")
      */
     private $name;
 
@@ -34,6 +37,8 @@ class User
      * @var string|null
      *
      * @ORM\Column(name="surname", type="string", length=255, nullable=true)
+     * @Assert\NotBlank
+     * @Assert\Regex("/[a-zA-Z]+/")
      */
     private $surname;
 
@@ -48,6 +53,10 @@ class User
      * @var string|null
      *
      * @ORM\Column(name="email", type="string", length=255, nullable=true)
+     * @Assert\NotBlank
+     * @Assert\Email(
+     *  message = "el email '{{ value }}' no es valido"
+     * )
      */
     private $email;
 
@@ -55,6 +64,7 @@ class User
      * @var string|null
      *
      * @ORM\Column(name="password", type="string", length=255, nullable=true)
+     * @Assert\NotBlank
      */
     private $password;
 
@@ -140,12 +150,12 @@ class User
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getCreatedAt()
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(?\DateTimeInterface $createdAt): self
+    public function setCreatedAt( $createdAt): self
     {
         $this->createdAt = $createdAt;
 
