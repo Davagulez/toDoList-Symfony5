@@ -12,19 +12,40 @@ class RegisterType extends AbstractType
     {
         $builder
         ->add('name', TextType::class, array(
-            'label' => 'Nombre'
+            'label' => 'Nombre',
+            'attr' => array(
+                'id' => 'name',
+                'placeholder' => 'John'
+            ),
+            'row_attr' => array('class' => 'input-group')
         ))
         ->add('surname', TextType::class, array(
-            'label' => 'Apellidos'
+            'label' => 'Apellidos',
+            'attr' => array(
+                'id' => 'surname',
+                'placeholder' => 'Doe'
+            ),
+            'row_attr' => array('class' => 'input-group')
         ))
         ->add('email', EmailType::class, array(
-            'label' => 'Correo'
+            'label' => 'Correo',
+            'attr' => array(
+                'id' => 'email',
+                'placeholder' => 'johndoe@example.com'
+            ),
+            'row_attr' => array('class' => 'input-group')
         ))
         ->add('password', PasswordType::class, array(
-            'label' => 'Contraseña'
+            'label' => 'Contraseña',
+            'attr' => array(
+                'id' => 'password'
+            ),
+            'row_attr' => array('class' => 'input-group')
         ))
         ->add('submit', SubmitType::class, array(
-            'label' => 'Registrarse'
+            'label' => 'Registrarse',
+            'attr' => array(
+                'class' => 'button button--checkout')
         ));
     }
 }
