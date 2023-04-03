@@ -1,6 +1,6 @@
 .form {
     max-width: 350px;
-    background-color: #ddf2ff;
+    background-color: #f2f2ff;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
@@ -43,4 +43,11 @@
     text-transform: uppercase;
     padding: 10px 15px;
     margin-top: 20px;
+    transition: .3s
+}
+
+.button:hover {
+    background-color: #0f100f;
+    color: #f2f2f2;
+
 }
