@@ -1,0 +1,23 @@
+{% block title %} Login de Usuarios {% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ asset('assets/css/forms/register.css') }}" type="text/css" rel="stylesheet">
+{% endblock %} 
+
+{% block body %}
+    <h1>Inicia sesión en tu cuenta</h1>
+
+    <form action="{{ path('login') }}" method="POST" class="form">   
+        <div class="input-group">
+            <label for="_username">Email</label>
+            <input type="email" id="username" name="_username" value="{{ last_username }}"></input>
+        </div>
+        <div class="input-group">
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" name="_password"></input>
+        </div>
+        <button class="checkout button--checkout">Acceder</button>
+        <p class="register--text">No tienes una cuenta? <a href="{{ path('register')}}">Registrate</a></p>
+    </form>
+
+{% endblock %}

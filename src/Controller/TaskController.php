@@ -31,7 +31,7 @@ class TaskController extends AbstractController
         } */
 
         //usuarios
-        $user_repo = $this->entityManager->getRepository(User::class);
+        /*$user_repo = $this->entityManager->getRepository(User::class);
         $users = $user_repo->findAll();
 
         foreach ($users as $user) {
@@ -39,7 +39,7 @@ class TaskController extends AbstractController
             foreach ($user->getTasks() as $task) {
                 echo $task->getTitle()."<br/>";
             }
-        }
+        }*/
 
         return $this->render('task/index.html.twig', [
             'controller_name' => 'TaskController',

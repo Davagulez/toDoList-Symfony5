@@ -10,6 +10,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Util\MyPasswordHasher;
 use App\Form\RegisterType;
 use DateTime;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class UserController extends AbstractController
 {
@@ -50,5 +52,15 @@ class UserController extends AbstractController
         return $this->render('user/register.html.twig', [
             'form' => $form->createView()
         ]);
+    }
+
+    public function login(AuthenticationUtils $authenticationUtils)
+    {
+        $error = $authenticationUtils->getLastAuthenticationError();
+        $lastUsername = $authenticationUtils->getLastUsername();
+        return $this->render('user/login.html.twig',array(
+            'error' => $error,
+            'last_username' => $lastUsername
+        ));
     }
 }

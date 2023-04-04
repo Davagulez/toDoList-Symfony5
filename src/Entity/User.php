@@ -6,14 +6,15 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 /**
  * User
  *
  * @ORM\Table(name="users")
  * @ORM\Entity
  */
-class User
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     /**
      * @var int
@@ -168,6 +169,32 @@ class User
     public function getTasks():Collection
     {
         return $this->tasks;
+    }
+
+    public function getRoles()
+    {
+        return ['ROLE_USER'];
+    }
+
+    public function getSalt()
+    {
+        // no se utiliza bcrypt como encriptación
+    }
+
+    public function getUserIdentifier()
+    {
+        return $this->name;
+    }
+
+    public function getUsername()
+    {
+        
+    }
+
+    public function eraseCredentials()
+    {
+        // no se almacena información sensible en texto plano
+        $this->password = null;
     }
 
 

@@ -20,10 +20,15 @@
         <nav id="nav" class="container">
             <h1>Tareas Symfony</h1>
             <div class="links">
-                <a href="{{ path('tasks')}}">Inicio</a>
-                <a href="">Mis Tareas</a>
-                <a href="">Iniciar Sesion</a>
-                <a href="{{ path('register')}}">Registro</a>
+                {% if app.user %}
+                    <a href="{{ path('tasks')}}">Inicio</a>
+                    <a href="">Mis Tareas</a>
+                    <a href="">{{ app.user.name }}</a>
+                    <a href="{{ path('logout')}}">Cerrar Sesion</a>
+                {% else %}
+                    <a href="{{ path('login')}}">Iniciar Sesion</a>
+                    <a href="{{ path('register')}}">Registro</a>
+                {% endif %}
             </div>
         </nav>
         {% endblock %}
